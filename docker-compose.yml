@@ -1,0 +1,23 @@
+# A Docker Compose setup for the development environment
+version: '3'
+services:
+  web:
+    stdin_open: true # Keep the standard input open after running the container (because for this app, it exists immediately after running)
+    build:
+      context: . # Sets the working directory docker-compose should work from (to the current working directory. I.e. the same directory the docker-compose file exists)
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - /app/node_modules # Means this is an exception: Do not try to map the folder /app/node_modules that is going to be generated inside the container to anywhere outside the container
+      - .:/app # Means map the current working directory "." outside the container to the /app directory inside the container (which is the specified WORKDIR inside the Dockerfile)
+  
+
+  tests:
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+        - /app/node_modules
+        - .:/app
+    command: ["npm", "run", "test"] # Overriding the default command in the Dockerfile (because we are creating this container with the sole purpose of running tests)
