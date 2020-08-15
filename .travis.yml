@@ -4,7 +4,7 @@ sudo: required # Super user level permissions are needed
 services:
   - docker # Travis CI  is going to install Docker engine
 
-before_intall:
+before_install:
   - docker build -t safeyhalim/docker-react -f Dockerfile.dev . # Tell Travis CI to build the Docker image from the development Dockerfile and giving it a tag name to be able to easily refer to it in the future (we cannot copy the image-id in case of Travis CI automated commands)
 
 script: # Travis CI commands to run the test suite. Travis CI is going to observe the result of each of the commands. If anyone returns anything other than 0, Travis CI is going to assume that the testing has failed
