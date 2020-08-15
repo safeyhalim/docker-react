@@ -1,4 +1,4 @@
-# A Docker Compose setup for the development environment
+# A Docker Compose setup for the development environment (so that changes in the source code are automatically reflected in the deployed Docker container)
 version: '3'
 services:
   web:
@@ -8,7 +8,7 @@ services:
       dockerfile: Dockerfile.dev
     ports:
       - "3000:3000"
-    volumes:
+    volumes: # Mapping local working directory to allow for live changes reflection in the deployed container
       - /app/node_modules # Means this is an exception: Do not try to map the folder /app/node_modules that is going to be generated inside the container to anywhere outside the container
       - .:/app # Means map the current working directory "." outside the container to the /app directory inside the container (which is the specified WORKDIR inside the Dockerfile)
   
