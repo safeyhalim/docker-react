@@ -21,5 +21,4 @@ deploy:
   on:
     branch: master # Deploy when new code is merged into master
   access_key_id: "$AWS_ACCESS_KEY" # Environment variables stored on Travis CI side
-  secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
