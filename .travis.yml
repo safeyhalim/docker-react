@@ -15,7 +15,7 @@ deploy:
   provider: elasticbeanstalk # Travis CI comes pre-configured with many providers. One of them is AWS ElasticBeanstalk
   region: "eu-central-1" # The AWS region
   app: "docker-react" # The application name on Elastic Beanstalk
-  env: "DockerReact-env" # The environment name on Elastic Beanstalk
+  env: "DockerReact-env1" # The environment name on Elastic Beanstalk
   bucket: "elasticbeanstalk-eu-central-1-517056985538" # Travis CI is going to package the source code of the master branch of the git repository and upload it the S3 bucket that belongs to the Elastic BeanStalk. This is the name of this S3 bucket. Btw. It's one s3 bucket for all the Elastic BeanStalk applications that you have. Every BeanStalk project (application) will have a folder under this S3 bucket
   bucket_path: "docker-react" # The path to the folder associated with the application in the S3 bucket of Elastic BeanStalk. By default, the folder name is the same as the app name.
   on:
